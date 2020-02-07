@@ -4,25 +4,123 @@
 
 | 주차  |    주제    | 출석 |
 | :---: | :--------: | :--: |
-| 1주차 | table view |  😓   |
-| 2주차 |            |      |
+| 1주차 | 유효성 검사 |  😓  |
+| 2주차 | 유효성 검사 in 얼리버디 |  ☺️  |
 | 3주차 |            |      |
 
 ------
 
-### 1주차 - table view
+### 유효성 검사 in 얼리버디
 
-테이블뷰는 데이터를 목록 형태로 보여줄 수 있는 가장 기본적인 컴포넌트 단위이다. <br>
+유효성 검사는 정규 표현식을 사용해서 구현했다.
 
-<img src="./img/TV_ex1" width="30%" height="30%"></img>
-<img src="./img/TV_ex2" width="30%" height="30%"></img>
+* 제플린에 나와있는 유효성 예시
 
-위와 같이 아이폰 기본 설정 목록도 테이블뷰이고, 어플인 벅스 재생목록도 테이블뷰를 사용하고 있다.
+  <img src="./img/유효성_제플린" width="30%" height="30%"></img>
+  아이디 : 영문 소문자로만 1자리 이상 <br><br>
 
-<img src="./img/TV_route1" width="30%" height="30%"></img>
-<img src="./img/TV_route2" width="30%" height="30%"></img>
+  비밀번호 : 영문 소문자와 숫자 포함 6자리 이상
 
-이와 같이 버튼을 누르면 테이블 뷰가 나타나는 방법을 사용할 수도 있다. 
+* 실제 구현 뷰 (로그인 뷰)
 
-<br><br>
+  <img src="./img/유효성_기본" width="30%" height="30%"></img>
+  <img src="./img/유효성_경고" width="30%" height="30%"></img>
+  <img src="./img/유효성_완료" width="30%" height="30%"></img>
 
+  텍스트필드 딜리게이트를 extension해서 적용했다.
+
+  ```swift
+  extension LoginViewController : UITextFieldDelegate{
+      func textFieldDidEndEditing(_ textField: UITextField) {
+          if textField == idTextField {
+              // 영문 소문자 1자리 이상
+              textFieldCheck(idTextField, idContainerView, idErrorLabel, "^[a-z]{1,}$", "영문 소문자만 사용해 주세요!")
+          } else if textField == pwTextField {
+              // 영문 소문자 + 숫자 총 6자리 이상
+              textFieldCheck(pwTextField, pwContainerView, pwErrorLabel, "^[a-z0-9]{6,}$", "형식에 맞게 사용해 주세요!")
+          }
+      }
+      
+      func textFieldCheck(_ tf: UITextField,_ cv: RoundedCornerView,_ errorLabel: UILabel,_ regex: String, _ alert: String) {
+          if !textFieldNullCheck(tf,cv, errorLabel) {
+          } else if !gsno(tf.text).hasCharacter(regex: regex) {
+              // 컨테이너 뷰 빨간색으로 변경
+              cv.setColor(.ff6E6E)
+              errorLabel.text = alert
+              errorLabel.textColor = .ff6E6E
+          } else {
+              cv.setColor(.lightGray)
+              errorLabel.text = " "
+          }
+      }
+      
+      func textFieldNullCheck(_ tf: UITextField,_ cv: RoundedCornerView,_ label: UILabel) -> Bool {
+          if tf.text == "" {
+              // 컨테이너 뷰 빨간색으로 변경
+              cv.setColor(.ff6E6E)
+              label.text = "값을 입력해주세요"
+              label.textColor = .ff6E6E
+              return false
+          } else { return true }
+      }
+      
+      // 키보드 처리
+      @objc func keyboardWillShow(notification: Notification) {
+          self.view.frame.origin.y -= 50
+      }
+      
+      @objc func keyboardWillHide(notification: Notification) {
+          self.view.frame.origin.y = originY
+      }
+      
+      override func viewWillAppear(_ animated: Bool) {
+          registerForKeyboardNotifications()
+          
+      }
+      
+      override func viewWillDisappear(_ animated: Bool) {
+          unregisterForKeyboardNotifications()
+      }
+      
+      func registerForKeyboardNotifications() {
+          NotificationCenter.default.addObserver(self, selector:#selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+          NotificationCenter.default.addObserver(self, selector:#selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+      }
+      func unregisterForKeyboardNotifications() {
+          NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+          NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+      }
+      
+      // 영역을 클릭하면 블루로 변경
+      func textFieldDidBeginEditing(_ textField: UITextField) {
+          if textField == idTextField {
+              idContainerView.setColor(.mainblue)
+          } else {
+              if idContainerView.pathColor == .mainblue {
+                  idContainerView.setColor(.lightGray)
+              }
+          }
+          if textField == pwTextField {
+              pwContainerView.setColor(.mainblue)
+          } else {
+              if pwContainerView.pathColor == .mainblue {
+                  pwContainerView.setColor(.lightGray)
+              }
+          }
+      }
+      
+      override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+          self.view.endEditing(true)
+          if gsno(idTextField.text).hasCharacter(regex: "^[a-z]{1,}$") &&
+              gsno(pwTextField.text).hasCharacter(regex: "^[a-z0-9]{6,}$") {
+              loginButton.isEnabled = true
+              loginButton.backgroundColor = .mainblue
+          } else {
+              loginButton.isEnabled = false
+              loginButton.backgroundColor = .lightGray
+          }
+      }
+  }
+  ```
+
+  
