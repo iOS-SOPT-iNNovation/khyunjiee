@@ -16,16 +16,16 @@
 
 * 제플린에 나와있는 유효성 예시
 
-  <img src="./img/유효성_제플린" width="30%" height="30%"></img>
+<img src="./img/유효성_제플린.png" width="30%" height="30%"></img>
   아이디 : 영문 소문자로만 1자리 이상 <br><br>
 
   비밀번호 : 영문 소문자와 숫자 포함 6자리 이상
 
 * 실제 구현 뷰 (로그인 뷰)
 
-  <img src="./img/유효성_기본" width="30%" height="30%"></img>
-  <img src="./img/유효성_경고" width="30%" height="30%"></img>
-  <img src="./img/유효성_완료" width="30%" height="30%"></img>
+  <img src="./img/유효성_기본.png" width="30%" height="30%"></img>
+  <img src="./img/유효성_경고.png" width="30%" height="30%"></img>
+  <img src="./img/유효성_완료.png" width="30%" height="30%"></img>
 
   텍스트필드 딜리게이트를 extension해서 적용했다.
 
