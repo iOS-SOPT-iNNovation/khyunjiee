@@ -2,11 +2,11 @@
 
 ### 일정 및 주제
 
-| 주차  |    주제    | 출석 |
-| :---: | :--------: | :--: |
-| 1주차 | 유효성 검사 |  😓  |
-| 2주차 | 유효성 검사 in 얼리버디 |  ☺️  |
-| 3주차 |            |      |
+| 주차  |          주제           | 출석 |
+| :---: | :---------------------: | :--: |
+| 1주차 |       유효성 검사       |  😓   |
+| 2주차 | 유효성 검사 in 얼리버디 |  ☺️   |
+| 3주차 |     이미지 불러오기     |  🤗   |
 
 ------
 
@@ -123,4 +123,69 @@
   }
   ```
 
-  
+  ------
+
+  ### 이미지 불러오기
+
+  - 갤러리에서 이미지 불러오기
+    <img src="./img/이미지_앨범1" width="30%" height="30%"></img>
+    <img src="./img/이미지_앨범2" width="30%" height="30%"></img>
+    <img src="./img/이미지_앨범3" width="30%" height="30%"></img>
+
+
+  - 카메라에서 이미지 불러오기
+
+     <img src="./img/이미지_카메라1" width="30%" height="30%"></img>
+    > 시뮬레이터는 카메라 적용이 안되기 때문에 처리해줌
+
+
+  - 갤러리와 카메라 사용은 UIImagePickerController를 사용
+
+    ```swift
+    // UIImagePickerController를 사용
+    // picker의 딜리게이트 처리를 해주어야 함
+    let picker = UIImagePickerController()
+    
+    override func viewDidLoad() {
+            super.viewDidLoad()
+            picker.delegate = self
+    }
+    ```
+
+    ```swift
+    // picker에서 이미지를 선택하면 UIImageView로 보여줌
+    extension AddMemoViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+        
+        func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+            if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+                imageView.image = image
+                print(info)
+            }
+            
+            dismiss(animated: true, completion: nil)
+        }
+        
+    }
+    ```
+
+
+
+  - 갤러리, 카메라 사용 함수들
+
+    ```swift
+    func openLibrary() {
+      picker.sourceType = .photoLibrary
+      present(picker, animated: false, completion: nil)
+    }
+    
+    func openCamera() {
+      if(UIImagePickerController .isSourceTypeAvailable(.camera)) {
+        picker.sourceType = .camera
+        present(picker, animated: false, completion: nil)
+      }
+    
+      else {
+        print("Camera not available")
+      }
+    }
+    ```
