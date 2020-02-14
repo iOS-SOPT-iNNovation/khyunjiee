@@ -128,14 +128,14 @@
   ### 이미지 불러오기
 
   - 갤러리에서 이미지 불러오기
-    <img src="./img/이미지_앨범1" width="30%" height="30%"></img>
-    <img src="./img/이미지_앨범2" width="30%" height="30%"></img>
-    <img src="./img/이미지_앨범3" width="30%" height="30%"></img>
+  <img src="./img/이미지_앨범1.png" width="30%" height="30%"></img>
+    <img src="./img/이미지_앨범2.png" width="30%" height="30%"></img>
+    <img src="./img/이미지_앨범3.png" width="30%" height="30%"></img>
 
 
   - 카메라에서 이미지 불러오기
 
-     <img src="./img/이미지_카메라1" width="30%" height="30%"></img>
+     <img src="./img/이미지_카메라1.png" width="30%" height="30%"></img>
     > 시뮬레이터는 카메라 적용이 안되기 때문에 처리해줌
 
 
