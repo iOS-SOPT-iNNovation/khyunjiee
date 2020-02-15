@@ -128,7 +128,7 @@
   ### 이미지 불러오기
 
   - 갤러리에서 이미지 불러오기
-  <img src="./img/이미지_앨범1.png" width="30%" height="30%"></img>
+    <img src="./img/이미지_앨범1.png" width="30%" height="30%"></img>
     <img src="./img/이미지_앨범2.png" width="30%" height="30%"></img>
     <img src="./img/이미지_앨범3.png" width="30%" height="30%"></img>
 
@@ -189,3 +189,44 @@
       }
     }
     ```
+
+    - URL 주소의 이미지 가져오기
+
+      <img src="./img/이미지_URL1.png" width="30%" height="30%"></img>
+      <img src="./img/이미지_URL2.png" width="30%" height="30%"></img>
+
+      ```swift
+      func openUrl() {
+              let getUrl = UIAlertController(title: "URL로 불러오기", message: "", preferredStyle: .alert)
+              getUrl.addTextField { (field: UITextField) in
+                  field.placeholder = "URL 주소를 입력해주세요."
+              }
+              let okAction = UIAlertAction(title: "확인", style: .default) { (action: UIAlertAction) in
+                  // alert 창의 textfield에서 입력된 값 가져오기
+                  let urlString = getUrl.textFields![0].text
+                  // 입력된 string을 url로 변환
+                  guard let urlAddress = URL(string: urlString!) else {return}
+                  
+                            // 메인 스레드에서 처리
+                  DispatchQueue.global().async { [weak self] in
+                      if let data = try? Data(contentsOf: urlAddress) {
+                          if let image = UIImage(data: data) {
+                              DispatchQueue.main.async {
+                                  self!.imageView.image = image
+                              }
+                          }
+                      }
+                  }
+              }
+        
+              let cancelAction = UIAlertAction(title: "취소", style: .cancel, handler: nil)
+              
+              getUrl.addAction(okAction)
+              getUrl.addAction(cancelAction)
+              
+              present(getUrl, animated: true, completion: nil)
+              
+      }
+      ```
+
+      
