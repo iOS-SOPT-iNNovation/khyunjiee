@@ -30,7 +30,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         cell.webImageView.tag = indexPath.row
         
         let urlStr: String = "https://placehold.it/200x200&text=SampleImg\(indexPath.row)"
-        let placeholder: UIImage? = UIImage.init(named: "placeholder.png")
+        let placeholder: UIImage? = UIImage.init(named: "img1")
         
         cell.webImageView.imageFromURL(urlString: urlStr, placeholder: placeholder) {
             if cell.finishReload == false {
