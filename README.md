@@ -12,6 +12,5 @@
 | 6주차 |  Swift Protocol (문법)  |  🥴   |
 
 ------
-### 수정중!
 
 * 6주차  https://purple-log.tistory.com/category/iOS/Swift
