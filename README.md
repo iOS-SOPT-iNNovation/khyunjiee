@@ -13,12 +13,5 @@
 | 7주차 | Swift Protocol(2) (문법) |  🥴   |
 
 ------
-<<<<<<< HEAD
-### 
-
 * 6주차  https://purple-log.tistory.com/1
 * 7주차  https://purple-log.tistory.com/2
-=======
-
-* 6주차  https://purple-log.tistory.com/category/iOS/Swift
->>>>>>> fc00ac02248b44b3499f22037aa90e5ab7d50e50
