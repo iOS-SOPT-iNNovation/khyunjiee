@@ -11,7 +11,9 @@
 | 5주차 |            ?             |  😰   |
 | 6주차 | Swift Protocol(1) (문법) |  🥴   |
 | 7주차 | Swift Protocol(2) (문법) |  🥴   |
+| 8주차 | Swift Protocol(3) (문법) |  🥴   |
 
 ------
 * 6주차  https://purple-log.tistory.com/1
-* 7주차  https://purple-log.tistory.com/2
+* 7주차  https://purple-log.tistory.com/2 
+* 8주차 https://purple-log.tistory.com/3
