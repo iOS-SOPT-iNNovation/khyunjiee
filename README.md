@@ -20,3 +20,4 @@
 * 9주차 https://purple-log.tistory.com/4
 * 11주차 https://purple-log.tistory.com/5
 * 12주차 https://purple-log.tistory.com/6
+* 13주차 https://purple-log.tistory.com/7
