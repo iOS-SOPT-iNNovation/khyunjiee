@@ -22,4 +22,5 @@
 * 12주차 https://purple-log.tistory.com/6
 * 13주차 https://purple-log.tistory.com/7
 * 14주차
+
   ![14주차](https://user-images.githubusercontent.com/49138331/80832679-10ffc700-8c28-11ea-91aa-0cc31ccbc19f.gif)
