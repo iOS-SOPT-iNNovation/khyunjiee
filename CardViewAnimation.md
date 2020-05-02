@@ -154,6 +154,7 @@
         }
         for animator in runningAnimations {
             animator.pauseAnimation()
+          	// view를 올릴 때 흐리게 처리하는 정도 : fractionComplete
             animationProgressWhenInterrupted = animator.fractionComplete
         }
     }
