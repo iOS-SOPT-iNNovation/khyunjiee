@@ -42,19 +42,21 @@
 
 ```swift
     func setupCard() {
+      	// Add Visual Effects View
         visualEffectView = UIVisualEffectView()
         visualEffectView.frame = self.view.frame
         self.view.addSubview(visualEffectView)
         
+      	// Add CardViewController xib to the bottom of the screen
         cardViewController = CardViewController(nibName: "CardViewController", bundle: nil)
         self.addChild(cardViewController)
         self.view.addSubview(cardViewController.view)
         
         cardViewController.view.frame = CGRect(x: 0, y: self.view.frame.height - cardHadleAreaHeight, width: self.view.bounds.width, height: cardHeight)
-        
+      	// clipping bounds so that the corners can be rounded
         cardViewController.view.clipsToBounds = true
         
-        
+        // Add tap and pan recognizers
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ViewController.handleCardTap(recognizer:)))
         let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(ViewController.handleCardPan(recognizer:)))
         
@@ -69,13 +71,16 @@
     @objc
     func handleCardPan(recognizer: UIPanGestureRecognizer) {
         switch recognizer.state {
+        // 클릭
         case .began:
             startInteractiveTransition(state: nextState, duration: 0.9)
+        // 변화가 있을 때
         case .changed:
             let translation = recognizer.translation(in: self.cardViewController.handleArea)
             var fractionComplete = translation.y / cardHeight
             fractionComplete = cardVisible ? fractionComplete : -fractionComplete
             updateInteractiveTransition(fractionCompleted: fractionComplete)
+        // 움직임이 끝났을 때
         case .ended:
             continueInteractiveTransition()
         default:
@@ -93,8 +98,10 @@
         if runningAnimations.isEmpty {
             let frameAnimator = UIViewPropertyAnimator(duration: duration, dampingRatio: 1) {
                 switch state {
+                // 카드를 위로 올릴 때
                 case .expanded:
                     self.cardViewController.view.frame.origin.y = self.view.frame.height - self.cardHeight
+                // 카드를 아래로 내릴 때
                 case .collapsed:
                     self.cardViewController.view.frame.origin.y = self.view.frame.height - self.cardHadleAreaHeight
                 }
@@ -108,10 +115,13 @@
             frameAnimator.startAnimation()
             runningAnimations.append(frameAnimator)
             
+            // 카드 뷰에 corner radius 효과
             let cornerRadiusAnimator = UIViewPropertyAnimator(duration: duration, curve: .linear) {
                 switch state {
+                // 카드를 위로 올릴 때
                 case .expanded:
                     self.cardViewController.view.layer.cornerRadius = 12
+                // 카드를 아래로 내릴 때
                 case .collapsed:
                     self.cardViewController.view.layer.cornerRadius = 0
                 }
@@ -120,10 +130,13 @@
             cornerRadiusAnimator.startAnimation()
             runningAnimations.append(cornerRadiusAnimator)
             
+          	// 뒷 배경 블러 효과
             let blurAnimator = UIViewPropertyAnimator(duration: duration, dampingRatio: 1) {
                 switch state {
+                // 카드를 위로 올릴 때
                 case .expanded:
-                    self.visualEffectView.effect = UIBlurEffect(style: .dark)
+                    self.visualEffectView.effect = UIBlurEffect(style: .dark)	
+                // 카드를 아래로 내릴 때
                 case .collapsed:
                     self.visualEffectView.effect = nil
                 }
