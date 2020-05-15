@@ -15,14 +15,24 @@
 
 ------
 * 6주차  https://purple-log.tistory.com/1
+
 * 7주차  https://purple-log.tistory.com/2 
+
 * 8주차 https://purple-log.tistory.com/3
+
 * 9주차 https://purple-log.tistory.com/4
+
 * 11주차 https://purple-log.tistory.com/5
+
 * 12주차 https://purple-log.tistory.com/6
+
 * 13주차 https://purple-log.tistory.com/7
+
 * 14주차
 
   ![14주차](https://user-images.githubusercontent.com/49138331/80832679-10ffc700-8c28-11ea-91aa-0cc31ccbc19f.gif)
   
 * 15주차 https://purple-log.tistory.com/8
+
+* 16주차 https://purple-log.tistory.com/9
+  https://github.com/iOS-SOPT-iNNovation/khyunjiee/blob/master/15주차%20스터디.md
