@@ -37,4 +37,7 @@
 * 16주차 https://purple-log.tistory.com/9
   https://github.com/iOS-SOPT-iNNovation/khyunjiee/blob/master/15주차%20스터디.md
   
- * 17주차  https://github.com/iOS-SOPT-iNNovation/khyunjiee/blob/master/URLSession(1).md
+* 17주차  https://github.com/iOS-SOPT-iNNovation/khyunjiee/blob/master/URLSession(1).md
+ 
+
+* 18주차 https://purple-log.tistory.com/10
