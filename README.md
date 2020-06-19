@@ -41,3 +41,5 @@
  
 
 * 18주차 https://purple-log.tistory.com/10
+
+* 20주차 https://purple-log.tistory.com/11
