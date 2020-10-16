@@ -7,8 +7,9 @@
 
 
 
-현재 상태는 검색 바만 있는 모습이다.
-![image-20200523070819889](/Users/hyunji/Library/Application Support/typora-user-images/image-20200523070819889.png)
+실행 결과
+
+![스터디세션](https://user-images.githubusercontent.com/49138331/82714380-46e51800-9cc9-11ea-9ac8-e0aae4fb7ec0.gif)
 
 
 
@@ -72,7 +73,6 @@
 
 
 앱을 빌드해주면 테이블 뷰에 검색 트랙 결과가 채워진 것을 볼 수 있다.
-![image-20200523070842594](/Users/hyunji/Library/Application Support/typora-user-images/image-20200523070842594.png)
 
 
 
