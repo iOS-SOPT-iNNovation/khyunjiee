@@ -32,4 +32,5 @@
 | **2020.09.18** | 29주차          | Code 기반 UI                           | https://purple-log.tistory.com/23 |
 | **2020.10.02** | 30주차          | Unit Test                              | https://purple-log.tistory.com/24 |
 | **2020.10.16** | 32주차          | Widget                                 | https://purple-log.tistory.com/25 |
+| **2020.10.30** | 33주차          | Share Extension                        | https://purple-log.tistory.com/26 |
 
